@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OpenCarbon Atlas Norway</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIINfQigSDd91ccnD5pF3sQH83N8u5w+Qt0="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="/viewer/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>OpenCarbon Atlas Norway</h1>
+        <p id="summary">Loading Norway point-source data...</p>
+      </div>
+      <div class="filters" aria-label="Map filters">
+        <label>
+          County
+          <select id="countyFilter">
+            <option value="">All</option>
+          </select>
+        </label>
+        <label>
+          Sector
+          <select id="sectorFilter">
+            <option value="">All</option>
+          </select>
+        </label>
+      </div>
+    </header>
+    <main class="layout">
+      <section id="map" aria-label="Norway industrial carbon atlas map"></section>
+      <aside class="panel">
+        <h2>Facilities</h2>
+        <div id="plantList" class="plant-list"></div>
+      </aside>
+    </main>
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="/viewer/map.js"></script>
+  </body>
+</html>
+

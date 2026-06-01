@@ -1,0 +1,8 @@
+capture_status_id,plant_id,readiness,capture_technology,target_capture_tonnes_per_year,storage_or_use_pathway,status_notes
+cap-brevik,plant-brevik,installed,amine post-combustion capture,400000,Northern Lights storage,Longship full-scale CCS project.
+cap-klemetsrud,plant-klemetsrud,planned,amine post-combustion capture,400000,Northern Lights storage,Project has been developed for Oslo waste-to-energy emissions.
+cap-mongstad,plant-mongstad,screening,post-combustion capture,1000000,North Sea storage,Large point source near existing CCS research infrastructure.
+cap-karsto,plant-karsto,screening,post-combustion capture,700000,North Sea storage,Gas processing emissions candidate.
+cap-tyssedal,plant-tyssedal,pilot,process gas capture,200000,industrial use or storage,Industrial process stream candidate.
+cap-melkoya,plant-melkoya,screening,post-combustion capture,700000,Barents Sea storage,Remote LNG emissions candidate.
+

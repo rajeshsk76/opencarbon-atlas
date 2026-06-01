@@ -1,0 +1,8 @@
+logistics_id,plant_id,nearest_port,port_distance_km,rail_access,storage_hub_candidate,transport_notes
+log-brevik,plant-brevik,Brevik,2,true,Northern Lights,Close to port and planned ship transport chain.
+log-klemetsrud,plant-klemetsrud,Oslo,15,true,Northern Lights,Urban site with road access to port.
+log-mongstad,plant-mongstad,Mongstad,1,false,Northern Lights,Industrial port location on the west coast.
+log-karsto,plant-karsto,Kårstø,1,false,North Sea storage,Existing gas infrastructure and coastal access.
+log-tyssedal,plant-tyssedal,Odda,6,false,Northern Lights,Hardangerfjord shipping access.
+log-melkoya,plant-melkoya,Hammerfest,4,false,Barents Sea storage,Remote Arctic coastal location.
+

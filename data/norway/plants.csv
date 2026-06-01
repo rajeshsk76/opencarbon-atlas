@@ -1,0 +1,8 @@
+plant_id,name,operator,sector,municipality,county,status,primary_product,start_year,website
+plant-brevik,Heidelberg Materials Brevik,Heidelberg Materials,cement,Porsgrunn,Telemark,operational,cement,1916,https://www.heidelbergmaterials.no/
+plant-klemetsrud,Hafslund Oslo Celsio Klemetsrud,Hafslund Oslo Celsio,waste_to_energy,Oslo,Oslo,operational,district heating and waste treatment,1985,https://www.celsio.no/
+plant-mongstad,Equinor Mongstad Refinery,Equinor,refining,Alver,Vestland,operational,refined petroleum products,1975,https://www.equinor.com/
+plant-karsto,Kårstø Processing Plant,Gassco,gas_processing,Tysvær,Rogaland,operational,natural gas liquids,1985,https://www.gassco.no/
+plant-tyssedal,TiZir Titanium and Iron,TiZir,titanium,Odda,Vestland,operational,titanium slag and high-purity pig iron,1986,https://www.tizir.co.uk/
+plant-melkoya,Hammerfest LNG,Equinor,lng,Hammerfest,Finnmark,operational,liquefied natural gas,2007,https://www.equinor.com/
+

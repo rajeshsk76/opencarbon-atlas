@@ -1,0 +1,8 @@
+emission_id,plant_id,year,scope,co2e_tonnes,source_id
+emi-brevik-2022,plant-brevik,2022,direct,800000,src-norske-utslipp
+emi-klemetsrud-2022,plant-klemetsrud,2022,direct,400000,src-oslo-celsio
+emi-mongstad-2022,plant-mongstad,2022,direct,1700000,src-norske-utslipp
+emi-karsto-2022,plant-karsto,2022,direct,1000000,src-norske-utslipp
+emi-tyssedal-2022,plant-tyssedal,2022,direct,260000,src-norske-utslipp
+emi-melkoya-2022,plant-melkoya,2022,direct,900000,src-norske-utslipp
+

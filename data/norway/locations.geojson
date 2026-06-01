@@ -1,0 +1,125 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.7006,
+          59.0569
+        ]
+      },
+      "properties": {
+        "plant_id": "plant-brevik",
+        "name": "Heidelberg Materials Brevik",
+        "operator": "Heidelberg Materials",
+        "sector": "cement",
+        "municipality": "Porsgrunn",
+        "county": "Telemark",
+        "status": "operational",
+        "primary_product": "cement"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.8351,
+          59.8377
+        ]
+      },
+      "properties": {
+        "plant_id": "plant-klemetsrud",
+        "name": "Hafslund Oslo Celsio Klemetsrud",
+        "operator": "Hafslund Oslo Celsio",
+        "sector": "waste_to_energy",
+        "municipality": "Oslo",
+        "county": "Oslo",
+        "status": "operational",
+        "primary_product": "district heating and waste treatment"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.0317,
+          60.8086
+        ]
+      },
+      "properties": {
+        "plant_id": "plant-mongstad",
+        "name": "Equinor Mongstad Refinery",
+        "operator": "Equinor",
+        "sector": "refining",
+        "municipality": "Alver",
+        "county": "Vestland",
+        "status": "operational",
+        "primary_product": "refined petroleum products"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.5144,
+          59.2753
+        ]
+      },
+      "properties": {
+        "plant_id": "plant-karsto",
+        "name": "Kårstø Processing Plant",
+        "operator": "Gassco",
+        "sector": "gas_processing",
+        "municipality": "Tysvær",
+        "county": "Rogaland",
+        "status": "operational",
+        "primary_product": "natural gas liquids"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.5557,
+          60.1204
+        ]
+      },
+      "properties": {
+        "plant_id": "plant-tyssedal",
+        "name": "TiZir Titanium and Iron",
+        "operator": "TiZir",
+        "sector": "titanium",
+        "municipality": "Odda",
+        "county": "Vestland",
+        "status": "operational",
+        "primary_product": "titanium slag and high-purity pig iron"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.5986,
+          70.6894
+        ]
+      },
+      "properties": {
+        "plant_id": "plant-melkoya",
+        "name": "Hammerfest LNG",
+        "operator": "Equinor",
+        "sector": "lng",
+        "municipality": "Hammerfest",
+        "county": "Finnmark",
+        "status": "operational",
+        "primary_product": "liquefied natural gas"
+      }
+    }
+  ]
+}

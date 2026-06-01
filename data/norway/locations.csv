@@ -1,0 +1,8 @@
+location_id,plant_id,latitude,longitude,address,municipality,county,coordinate_precision
+loc-brevik,plant-brevik,59.0569,9.7006,Setrevegen 2,Porsgrunn,Telemark,site
+loc-klemetsrud,plant-klemetsrud,59.8377,10.8351,Klemetsrudveien 1,Oslo,Oslo,site
+loc-mongstad,plant-mongstad,60.8086,5.0317,Mongstad,Alver,Vestland,site
+loc-karsto,plant-karsto,59.2753,5.5144,Kårstø,Tysvær,Rogaland,site
+loc-tyssedal,plant-tyssedal,60.1204,6.5557,Naustbakken 1,Odda,Vestland,site
+loc-melkoya,plant-melkoya,70.6894,23.5986,Melkøya,Hammerfest,Finnmark,site
+

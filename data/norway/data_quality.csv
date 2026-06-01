@@ -1,0 +1,8 @@
+quality_id,plant_id,field_group,rating,rationale,reviewed_date
+qual-brevik,plant-brevik,location,high,Site coordinates and project details are public.,2026-06-01
+qual-klemetsrud,plant-klemetsrud,emissions,medium,Public project figures are rounded and may vary by year.,2026-06-01
+qual-mongstad,plant-mongstad,point_sources,medium,Point-source split is simplified from facility-level emissions.,2026-06-01
+qual-karsto,plant-karsto,point_sources,medium,Point-source split is simplified from facility-level emissions.,2026-06-01
+qual-tyssedal,plant-tyssedal,capture_status,low,Capture pathway is indicative and requires source refinement.,2026-06-01
+qual-melkoya,plant-melkoya,logistics,medium,Remote storage pathway is a screening assumption.,2026-06-01
+

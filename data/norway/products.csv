@@ -1,0 +1,8 @@
+product_id,plant_id,product,annual_capacity_tonnes,capacity_year,source_id
+prod-brevik-cement,plant-brevik,cement,1200000,2022,src-heidelberg-brevik
+prod-klemetsrud-heat,plant-klemetsrud,district heating,1000000,2022,src-oslo-celsio
+prod-mongstad-refined,plant-mongstad,refined petroleum products,12000000,2022,src-equinor-mongstad
+prod-karsto-ngl,plant-karsto,natural gas liquids,10000000,2022,src-gassco-karsto
+prod-tyssedal-slag,plant-tyssedal,titanium slag,230000,2022,src-tizir
+prod-melkoya-lng,plant-melkoya,liquefied natural gas,4300000,2022,src-equinor-melkoya
+

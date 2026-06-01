@@ -1,0 +1,8 @@
+point_source_id,plant_id,source_name,stream_type,estimated_co2_concentration_pct,annual_co2_tonnes,capture_priority
+ps-brevik-kiln,plant-brevik,cement kiln,process and combustion,22,800000,high
+ps-klemetsrud-incinerator,plant-klemetsrud,waste incineration lines,combustion,10,400000,high
+ps-mongstad-cracker,plant-mongstad,refinery process heaters,combustion,8,1700000,medium
+ps-karsto-turbines,plant-karsto,gas turbines and process units,combustion,5,1000000,medium
+ps-tyssedal-reduction,plant-tyssedal,reduction furnaces,process,18,260000,medium
+ps-melkoya-power,plant-melkoya,LNG power and process units,combustion,6,900000,medium
+

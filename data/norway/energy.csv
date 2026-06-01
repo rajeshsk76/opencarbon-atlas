@@ -1,0 +1,8 @@
+energy_id,plant_id,electricity_demand_gwh,heat_demand_gwh,primary_energy_source,grid_region,source_id
+ene-brevik,plant-brevik,400,900,electricity and thermal fuel,NO2,src-heidelberg-brevik
+ene-klemetsrud,plant-klemetsrud,120,300,waste heat and electricity,NO1,src-oslo-celsio
+ene-mongstad,plant-mongstad,900,4200,refinery fuel gas and electricity,NO5,src-equinor-mongstad
+ene-karsto,plant-karsto,700,2500,natural gas and electricity,NO2,src-gassco-karsto
+ene-tyssedal,plant-tyssedal,1800,200,electricity,NO5,src-tizir
+ene-melkoya,plant-melkoya,1300,3100,natural gas and electricity,NO4,src-equinor-melkoya
+

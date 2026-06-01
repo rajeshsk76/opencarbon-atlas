@@ -1,0 +1,27 @@
+[project]
+name = "opencarbon-atlas"
+version = "0.1.0"
+description = "CSV-backed carbon project atlas with a FastAPI backend and Leaflet viewer."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.110",
+  "starlette<1.0",
+  "uvicorn[standard]>=0.27",
+]
+
+[project.optional-dependencies]
+dev = [
+  "httpx>=0.26",
+  "pytest>=8.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.setuptools.packages.find]
+include = ["api*"]
+
+[tool.ruff]
+line-length = 100
