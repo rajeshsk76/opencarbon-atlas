@@ -10,6 +10,22 @@ OpenCarbon Atlas v1 is a Norway-focused industrial carbon point-source atlas. Th
 - Scripts to seed/check sample data, validate CSV integrity, and rebuild `locations.geojson`.
 - Documentation for methodology, data sources, schema, contribution workflow, and roadmap.
 
+## Data Governance
+
+OpenCarbon Atlas v1 keeps data governance in the CSV layer. Every CSV data row must include:
+
+- `reference_id` identifying the entry in `references.csv` that supports the row.
+- `data_quality` using the v1 A-E evidence scale.
+- `method` describing whether the value is reported, transcribed, calculated, estimated, or assumed.
+
+The v1 data-quality scale is:
+
+- `A` = government reported
+- `B` = company annual report or official company page
+- `C` = scientific paper
+- `D` = engineering calculation
+- `E` = assumption / unverified
+
 ## Quick Start
 
 ```bash
@@ -36,4 +52,4 @@ tests/               API and validation tests
 
 ## Data License
 
-The seed dataset is illustrative and should be treated as a starter dataset, not as verified investment, regulatory, or engineering advice. Add source URLs and data-quality notes when contributing new records.
+The seed dataset is illustrative and should be treated as a starter dataset, not as verified investment, regulatory, or engineering advice. Add reference URLs, `reference_id`, `data_quality`, and `method` values when contributing new records.
