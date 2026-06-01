@@ -5,6 +5,8 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 const summary = document.querySelector("#summary");
+const totalEmissions = document.querySelector("#totalEmissions");
+const plantCount = document.querySelector("#plantCount");
 const markers = L.layerGroup().addTo(map);
 
 function titleCase(value) {
@@ -15,6 +17,10 @@ function formatNumber(value) {
   return new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(value || 0);
 }
 
+function formatKtCo2e(value) {
+  return `${formatNumber((Number(value) || 0) / 1000)} ktCO2e/year`;
+}
+
 function markerRadius(emissions, maxEmissions) {
   if (!emissions || !maxEmissions) {
     return 8;
@@ -23,14 +29,30 @@ function markerRadius(emissions, maxEmissions) {
 }
 
 function popupHtml(properties) {
-  const emissions = `${formatNumber(properties.emissions)} ${properties.emissions_unit || "tCO2e"}`;
+  const emissions = formatKtCo2e(properties.emissions);
   return `
-    <div class="popup-title">${properties.name}</div>
-    <div class="popup-row">${titleCase(properties.sector)} · ${properties.operator}</div>
-    <div class="popup-row">Emissions: <strong>${emissions}</strong></div>
-    <div class="popup-row">Capture: ${titleCase(properties.capture_status)}</div>
-    <div class="popup-row">Reference: ${properties.reference_id || "n/a"}</div>
-    <div class="popup-row">Quality: ${properties.data_quality || "n/a"}</div>
+    <div class="popup">
+      <div class="popup-title">${properties.name}</div>
+      <div class="popup-meta">${titleCase(properties.sector)} · ${properties.operator}</div>
+      <dl class="popup-facts">
+        <div>
+          <dt>Emissions</dt>
+          <dd>${emissions}</dd>
+        </div>
+        <div>
+          <dt>Capture</dt>
+          <dd>${titleCase(properties.capture_status)}</dd>
+        </div>
+        <div>
+          <dt>Data quality</dt>
+          <dd>${properties.data_quality || "n/a"}</dd>
+        </div>
+        <div>
+          <dt>Reference</dt>
+          <dd>${properties.reference_id || "n/a"}</dd>
+        </div>
+      </dl>
+    </div>
   `;
 }
 
@@ -53,9 +75,11 @@ function renderMap(geojson) {
     bounds.push([latitude, longitude]);
   }
 
-  summary.textContent = `${features.length} facilities · ${formatNumber(
-    features.reduce((total, feature) => total + (feature.properties.emissions || 0), 0),
-  )} tCO2e latest Scope 1`;
+  const totalScope1 = features.reduce((total, feature) => total + (feature.properties.emissions || 0), 0);
+
+  summary.textContent = `${features.length} plants with latest Scope 1 emissions, capture status, and A-E evidence quality.`;
+  totalEmissions.textContent = formatKtCo2e(totalScope1);
+  plantCount.textContent = formatNumber(features.length);
 
   if (bounds.length > 0) {
     map.fitBounds(bounds, { padding: [32, 32], maxZoom: 7 });
@@ -70,7 +94,10 @@ function chartOptions(unitLabel) {
       legend: { display: false },
       tooltip: {
         callbacks: {
-          label: (context) => `${context.dataset.label}: ${formatNumber(context.parsed.y ?? context.parsed)}`,
+          label: (context) => {
+            const value = formatNumber(context.parsed.y ?? context.parsed);
+            return unitLabel ? `${context.dataset.label}: ${value} ${unitLabel}` : `${context.dataset.label}: ${value}`;
+          },
         },
       },
     },
@@ -127,14 +154,18 @@ async function boot() {
     fetchJson("/analytics/data-quality"),
   ]);
 
+  const sectorsByEmissions = [...sectorData].sort(
+    (left, right) => right.total_scope1_co2e - left.total_scope1_co2e,
+  );
+
   renderMap(geojson);
   renderBarChart(
     "#sectorChart",
-    sectorData.map((row) => titleCase(row.sector)),
-    sectorData.map((row) => row.total_scope1_co2e),
+    sectorsByEmissions.map((row) => titleCase(row.sector)),
+    sectorsByEmissions.map((row) => row.total_scope1_co2e / 1000),
     "Scope 1 CO2e",
     "#198754",
-    "tCO2e",
+    "ktCO2e/year",
   );
   renderBarChart(
     "#captureChart",

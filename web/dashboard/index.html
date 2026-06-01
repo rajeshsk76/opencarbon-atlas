@@ -15,15 +15,26 @@
   <body>
     <header class="topbar">
       <div>
+        <p class="eyebrow">Norway industrial point-source screening</p>
         <h1>OpenCarbon Atlas Dashboard</h1>
-        <p id="summary">Loading Norway industrial CO2 inventory...</p>
+        <p id="summary">Loading facility emissions, capture status, and evidence quality...</p>
       </div>
     </header>
     <main class="dashboard">
       <section class="map-section" aria-label="Interactive Norway CO2 map">
         <div id="map"></div>
       </section>
-      <section class="chart-grid" aria-label="Analytics charts">
+      <section class="analytics" aria-label="Dashboard analytics">
+        <div class="metric-grid" aria-label="Dataset summary">
+          <article class="metric-card">
+            <span>Total CO2 represented</span>
+            <strong id="totalEmissions">-- ktCO2e/year</strong>
+          </article>
+          <article class="metric-card">
+            <span>Plants</span>
+            <strong id="plantCount">--</strong>
+          </article>
+        </div>
         <article class="chart-panel">
           <h2>Sector Emissions</h2>
           <canvas id="sectorChart"></canvas>
@@ -32,12 +43,20 @@
           <h2>Capture Status</h2>
           <canvas id="captureChart"></canvas>
         </article>
-        <article class="chart-panel">
+        <article class="chart-panel quality-panel">
           <h2>Data Quality</h2>
+          <ul class="quality-legend" aria-label="Data quality definitions">
+            <li><strong>A</strong> Government reported</li>
+            <li><strong>B</strong> Company report or official page</li>
+            <li><strong>C</strong> Scientific paper</li>
+            <li><strong>D</strong> Engineering calculation</li>
+            <li><strong>E</strong> Assumption / unverified</li>
+          </ul>
           <canvas id="qualityChart"></canvas>
         </article>
       </section>
     </main>
+    <footer class="footnote">Screening dataset. Verify all values using references.</footer>
     <script
       src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
       integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
