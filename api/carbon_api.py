@@ -13,6 +13,11 @@ app = FastAPI(
 )
 
 app.mount("/viewer", StaticFiles(directory=ROOT_DIR / "web" / "map_viewer"), name="viewer")
+app.mount(
+    "/dashboard",
+    StaticFiles(directory=ROOT_DIR / "web" / "dashboard", html=True),
+    name="dashboard",
+)
 
 
 @app.get("/")
@@ -63,6 +68,92 @@ def locations_geojson(
     return {"type": "FeatureCollection", "features": features}
 
 
+def latest_total_scope1_emissions() -> dict[str, dict[str, object]]:
+    latest_emissions: dict[str, dict[str, object]] = {}
+    for row in load_tables()["emissions"]:
+        if row["emission_type"] != "total_scope1_co2e":
+            continue
+        plant_id = str(row["plant_id"])
+        current = latest_emissions.get(plant_id)
+        if current is None or int(row["year"]) > int(current["year"]):
+            latest_emissions[plant_id] = row
+    return latest_emissions
+
+
+@app.get("/geojson")
+def dashboard_geojson() -> dict[str, object]:
+    tables = load_tables()
+    geojson = load_geojson()
+    latest_emissions = latest_total_scope1_emissions()
+    capture_by_plant = {str(row["plant_id"]): row for row in tables["capture_status"]}
+
+    features = []
+    for feature in geojson["features"]:
+        properties = dict(feature["properties"])
+        plant_id = str(properties["plant_id"])
+        emission = latest_emissions.get(plant_id, {})
+        capture = capture_by_plant.get(plant_id, {})
+        properties.update(
+            {
+                "emissions": emission.get("value"),
+                "emissions_unit": emission.get("unit"),
+                "emissions_year": emission.get("year"),
+                "capture_status": capture.get("capture_status", "none"),
+                "reference_id": emission.get("reference_id"),
+                "data_quality": emission.get("data_quality"),
+            }
+        )
+        features.append({**feature, "properties": properties})
+
+    return {"type": "FeatureCollection", "features": features}
+
+
+@app.get("/analytics/sector-emissions")
+def sector_emissions() -> list[dict[str, object]]:
+    tables = load_tables()
+    plants_by_id = {str(row["plant_id"]): row for row in tables["plants"]}
+    totals: dict[str, float] = {}
+    for row in latest_total_scope1_emissions().values():
+        plant = plants_by_id[str(row["plant_id"])]
+        sector_name = str(plant["sector"])
+        totals[sector_name] = totals.get(sector_name, 0.0) + float(row["value"])
+    return [
+        {"sector": sector_name, "total_scope1_co2e": total}
+        for sector_name, total in sorted(totals.items())
+    ]
+
+
+@app.get("/analytics/capture-status")
+def capture_status_analytics() -> list[dict[str, object]]:
+    counts: dict[str, int] = {}
+    for row in load_tables()["capture_status"]:
+        status = str(row["capture_status"])
+        counts[status] = counts.get(status, 0) + 1
+    return [{"capture_status": status, "count": count} for status, count in sorted(counts.items())]
+
+
+@app.get("/analytics/data-quality")
+def data_quality_analytics() -> list[dict[str, object]]:
+    counts = {grade: 0 for grade in ["A", "B", "C", "D", "E"]}
+    governed_tables = [
+        "plants",
+        "locations",
+        "emissions",
+        "products",
+        "point_sources",
+        "capture_status",
+        "energy",
+        "logistics",
+    ]
+    tables = load_tables()
+    for table in governed_tables:
+        for row in tables[table]:
+            grade = row.get("data_quality")
+            if grade in counts:
+                counts[str(grade)] += 1
+    return [{"data_quality": grade, "count": count} for grade, count in counts.items()]
+
+
 @app.get("/api/stats")
 def stats() -> dict[str, object]:
     tables = load_tables()
@@ -78,8 +169,7 @@ def stats() -> dict[str, object]:
 
     return {
         "plant_count": len(tables["plants"]),
-        "latest_emissions_tonnes": sum(float(row["co2e_tonnes"]) for row in latest_emissions.values()),
+        "latest_emissions_tonnes": sum(float(row["value"]) for row in latest_emissions.values()),
         "point_source_count": len(tables["point_sources"]),
         "by_sector": by_sector,
     }
-

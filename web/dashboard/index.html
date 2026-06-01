@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OpenCarbon Atlas Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIINfQigSDd91ccnD5pF3sQH83N8u5w+Qt0="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="/dashboard/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>OpenCarbon Atlas Dashboard</h1>
+        <p id="summary">Loading Norway industrial CO2 inventory...</p>
+      </div>
+    </header>
+    <main class="dashboard">
+      <section class="map-section" aria-label="Interactive Norway CO2 map">
+        <div id="map"></div>
+      </section>
+      <section class="chart-grid" aria-label="Analytics charts">
+        <article class="chart-panel">
+          <h2>Sector Emissions</h2>
+          <canvas id="sectorChart"></canvas>
+        </article>
+        <article class="chart-panel">
+          <h2>Capture Status</h2>
+          <canvas id="captureChart"></canvas>
+        </article>
+        <article class="chart-panel">
+          <h2>Data Quality</h2>
+          <canvas id="qualityChart"></canvas>
+        </article>
+      </section>
+    </main>
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <script src="/dashboard/dashboard.js"></script>
+  </body>
+</html>

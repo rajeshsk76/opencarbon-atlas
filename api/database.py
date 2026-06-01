@@ -25,16 +25,13 @@ TABLE_FILES = {
 NUMERIC_FIELDS = {
     "latitude",
     "longitude",
-    "co2e_tonnes",
-    "annual_capacity_tonnes",
+    "value",
     "estimated_co2_concentration_pct",
     "annual_co2_tonnes",
     "target_capture_tonnes_per_year",
-    "electricity_demand_gwh",
-    "heat_demand_gwh",
     "port_distance_km",
 }
-INTEGER_FIELDS = {"start_year", "year", "capacity_year"}
+INTEGER_FIELDS = {"start_year", "year"}
 BOOLEAN_FIELDS = {"rail_access"}
 
 
@@ -93,4 +90,3 @@ def get_plant_detail(plant_id: str) -> dict[str, Any] | None:
 def load_geojson() -> dict[str, Any]:
     with (DATA_DIR / "locations.geojson").open(encoding="utf-8") as handle:
         return json.load(handle)
-
