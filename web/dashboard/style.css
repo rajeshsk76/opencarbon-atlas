@@ -204,6 +204,22 @@ h2 {
   color: var(--ink);
   font-size: 12px;
   font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.panel-error {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  font-style: italic;
+}
+
+.leaflet-popup-close-button {
+  width: 32px !important;
+  height: 32px !important;
+  padding: 6px !important;
+  font-size: 20px !important;
+  line-height: 20px !important;
 }
 
 .footnote {
