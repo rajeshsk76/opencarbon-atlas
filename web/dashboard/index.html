@@ -6,63 +6,80 @@
     <title>OpenCarbon Atlas Dashboard</title>
     <link
       rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIINfQigSDd91ccnD5pF3sQH83N8u5w+Qt0="
-      crossorigin=""
+      href="/dashboard/vendor/leaflet/leaflet.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/dashboard/vendor/markercluster/MarkerCluster.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/dashboard/vendor/markercluster/MarkerCluster.Default.css"
     />
     <link rel="stylesheet" href="/dashboard/style.css" />
   </head>
   <body>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Norway industrial point-source screening</p>
-        <h1>OpenCarbon Atlas Dashboard</h1>
-        <p id="summary">Loading facility emissions, capture status, and evidence quality...</p>
-      </div>
-    </header>
     <main class="dashboard">
-      <section class="map-section" aria-label="Interactive Norway CO2 map">
+      <section class="map-panel" aria-label="OpenCarbon Atlas Norway map">
         <div id="map"></div>
       </section>
-      <section class="analytics" aria-label="Dashboard analytics">
-        <div class="metric-grid" aria-label="Dataset summary">
-          <article class="metric-card">
-            <span>Total CO2 represented</span>
-            <strong id="totalEmissions">-- ktCO2e/year</strong>
+
+      <aside class="sidebar" aria-label="Dashboard controls and summary">
+        <header class="sidebar-header">
+          <p class="eyebrow">Norway industrial facilities</p>
+          <h1>OpenCarbon Atlas</h1>
+          <p id="summary">Loading Miljødirektoratet facility data...</p>
+        </header>
+
+        <section class="filter-bar" aria-label="Map filters">
+          <label class="check-filter">
+            <input id="activeOnlyFilter" type="checkbox" checked />
+            Active only
+          </label>
+          <label class="check-filter">
+            <input id="airOnlyFilter" type="checkbox" checked />
+            Air emissions only
+          </label>
+          <label class="check-filter">
+            <input id="closedFilter" type="checkbox" checked />
+            Closed facilities
+          </label>
+        </section>
+
+        <section class="kpi-list" aria-label="Facility summary">
+          <article class="kpi-card">
+            <span>Total facilities</span>
+            <strong id="totalFacilities">--</strong>
           </article>
-          <article class="metric-card">
-            <span>Plants</span>
-            <strong id="plantCount">--</strong>
+          <article class="kpi-card">
+            <span>Active facilities</span>
+            <strong id="activeFacilities">--</strong>
           </article>
-        </div>
-        <article class="chart-panel">
-          <h2>Sector Emissions</h2>
-          <canvas id="sectorChart"></canvas>
-        </article>
-        <article class="chart-panel">
-          <h2>Capture Status</h2>
-          <canvas id="captureChart"></canvas>
-        </article>
-        <article class="chart-panel quality-panel">
-          <h2>Data Quality</h2>
-          <ul class="quality-legend" aria-label="Data quality definitions">
-            <li><strong>A</strong> Government reported</li>
-            <li><strong>B</strong> Company annual report or official company page</li>
-            <li><strong>C</strong> Scientific paper</li>
-            <li><strong>D</strong> Engineering calculation</li>
-            <li><strong>E</strong> Assumption / unverified</li>
-          </ul>
-          <canvas id="qualityChart"></canvas>
-        </article>
-      </section>
+          <article class="kpi-card">
+            <span>Air emission sources</span>
+            <strong id="airEmissionSources">--</strong>
+          </article>
+          <article class="kpi-card">
+            <span>Municipalities</span>
+            <strong id="municipalities">--</strong>
+          </article>
+        </section>
+
+        <section class="legend" aria-label="Marker legend">
+          <h2>Marker status</h2>
+          <div><span class="legend-dot red"></span>Active air emissions</div>
+          <div><span class="legend-dot blue"></span>Active water</div>
+          <div><span class="legend-dot grey"></span>Closed</div>
+        </section>
+      </aside>
     </main>
-    <footer class="footnote">Screening dataset. Verify all values using references.</footer>
+
     <script
-      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-      crossorigin=""
+      src="https://unpkg.com/leaflet/dist/leaflet.js"
     ></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <script
+      src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"
+    ></script>
     <script src="/dashboard/dashboard.js"></script>
   </body>
 </html>
